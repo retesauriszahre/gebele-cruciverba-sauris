@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gebele. &mdash; Hai vinto!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <img class="decor top-right" src="img/dotted.jpg" alt="">
+  <img class="decor bottom-left" src="img/fork.jpg" alt="">
+
+  <div class="wrap">
+    <header>
+      <img class="logo" src="img/logo.jpg" alt="Gebele.">
+    </header>
+    <p class="kicker">Sauris in Carnia</p>
+
+    <div id="win-ok" hidden>
+      <h1 class="title win-title">HAI VINTO!</h1>
+      <p class="intro">Hai svelato la parola nascosta</p>
+      <p class="win-word" id="win-word"></p>
+      <p class="intro">Complimenti, la sfida &egrave; completa. Grazie per aver giocato con Gebele.</p>
+
+      <!-- Spazio riservato al codice sconto: da definire in una fase successiva del progetto. -->
+      <div class="reward-slot">
+        <p class="reward-placeholder">Qui comparir&agrave; la tua ricompensa.</p>
+      </div>
+    </div>
+
+    <div id="win-empty" hidden>
+      <p class="intro">Non risulta ancora nessuna sfida completata su questo dispositivo.</p>
+      <div class="cta">
+        <a class="btn primary" href="cruciverba.html">Vai al cruciverba</a>
+      </div>
+    </div>
+
+    <footer>Gebele. &mdash; Sapori che raccontano, arte che incanta</footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

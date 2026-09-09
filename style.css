@@ -1,0 +1,342 @@
+:root {
+    --bg: #b85e3a;
+    --cream: #fbe9cf;
+    --ink: #1c1108;
+    --yellow: #f2c14e;
+    --yellow-ink: #5b3d0a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 20px 80px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .decor {
+    position: absolute;
+    opacity: 0.16;
+    mix-blend-mode: screen;
+    filter: invert(1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .decor.top-right { top: -40px; right: -60px; width: 320px; }
+  .decor.bottom-left { bottom: 0; left: -80px; width: 340px; transform: scaleX(-1); }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 760px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 8px;
+    /* .wrap crea uno stacking context: senza uno sfondo qui il multiply del logo
+       non ha nulla con cui fondersi e il JPEG mostra il suo riquadro bianco. */
+    background: var(--bg);
+  }
+  header img.logo {
+    width: min(340px, 70vw);
+    mix-blend-mode: multiply;
+  }
+
+  .kicker {
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    letter-spacing: 0.04em;
+    font-size: 15px;
+    color: var(--cream);
+    opacity: 0.85;
+    margin: 6px 0 2px;
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 40px);
+    text-align: center;
+    margin: 18px 0 6px;
+    line-height: 1.15;
+  }
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  p.intro {
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--cream);
+    opacity: 0.92;
+  }
+
+  .board-frame {
+    background: rgba(0,0,0,0.14);
+    border: 1px solid rgba(251,233,207,0.35);
+    border-radius: 4px;
+    padding: 24px 18px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(15, minmax(24px, 34px));
+    grid-template-rows: repeat(9, minmax(24px, 34px));
+    gap: 3px;
+    width: max-content;
+    margin: 0 auto;
+  }
+
+  .cell {
+    position: relative;
+    background: var(--cream);
+    border-radius: 2px;
+  }
+  .cell.hl {
+    background: var(--yellow);
+  }
+  .cell input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    caret-color: var(--ink);
+    padding: 0;
+  }
+  .cell.hl input { color: var(--yellow-ink); }
+  .cell input:focus { outline: 2px solid var(--ink); outline-offset: -2px; }
+  .cell.correct { box-shadow: inset 0 0 0 2px #3c6e3c; }
+  .cell.wrong { box-shadow: inset 0 0 0 2px #8a2e2e; }
+
+  .clue-num {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    font-size: 8px;
+    font-family: 'EB Garamond', serif;
+    color: var(--ink);
+    opacity: 0.55;
+    line-height: 1;
+  }
+
+  .hint {
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    opacity: 0.75;
+    margin: 10px 0 40px;
+  }
+  .hint .sw {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--yellow);
+    border-radius: 1px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    text-align: left;
+    margin: 0 0 18px;
+    border-bottom: 1px solid rgba(251,233,207,0.3);
+    padding-bottom: 10px;
+  }
+
+  ul.clues {
+    list-style: none;
+    margin: 0 0 44px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  li.clue {
+    display: flex;
+    gap: 14px;
+  }
+  .clue-index {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--yellow);
+    min-width: 22px;
+  }
+  .clue-title {
+    margin: 0 0 3px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--cream);
+  }
+  .clue-text {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.48;
+    color: var(--cream);
+    opacity: 0.88;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  button {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    padding: 12px 30px;
+    border-radius: 2px;
+    border: 1px solid var(--cream);
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+  }
+  button.primary {
+    background: var(--cream);
+    color: var(--bg);
+    font-weight: 600;
+  }
+  button:hover { opacity: 0.85; }
+
+  /* DEBUG: pulsante temporaneo di autocompletamento — rimuovere prima della pubblicazione definitiva */
+  button.debug {
+    border-style: dashed;
+    font-size: 13px;
+    opacity: 0.75;
+  }
+
+  #feedback {
+    text-align: center;
+    min-height: 28px;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  #feedback.ok { color: #c9e6b8; }
+  #feedback.bad { color: #f1b5b5; }
+
+  #reveal {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+    padding: 24px;
+    border: 1px solid var(--yellow);
+    background: rgba(242,193,78,0.1);
+  }
+  #reveal.show { display: block; }
+  #reveal .word {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: 0.08em;
+    color: var(--yellow);
+    margin: 6px 0 4px;
+  }
+  #reveal p { margin: 0; font-size: 15px; opacity: 0.9; }
+
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 13px;
+    opacity: 0.6;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: repeat(15, minmax(20px, 26px)); grid-template-rows: repeat(9, minmax(20px, 26px)); }
+    .cell input { font-size: 13px; }
+  }
+  /* ============================================================
+     ELEMENTI CONDIVISI DALLE TRE PAGINE
+     ============================================================ */
+
+  [hidden] { display: none !important; }
+
+  /* Link che deve avere lo stesso aspetto dei pulsanti */
+  a.btn {
+    display: inline-block;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    padding: 12px 30px;
+    border-radius: 2px;
+    border: 1px solid var(--cream);
+    background: transparent;
+    color: var(--cream);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a.btn.primary {
+    background: var(--cream);
+    color: var(--bg);
+    font-weight: 600;
+  }
+  a.btn:hover { opacity: 0.85; }
+
+  .cta {
+    display: flex;
+    justify-content: center;
+    margin: 28px 0 8px;
+  }
+
+  /* ============================================================
+     PAGINA "HAI VINTO!"
+     ============================================================ */
+
+  h1.win-title {
+    font-size: clamp(36px, 8vw, 64px);
+    letter-spacing: 0.06em;
+    margin: 24px 0 18px;
+  }
+
+  .win-word {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(30px, 6vw, 44px);
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: var(--yellow);
+    margin: 6px 0 22px;
+  }
+
+  .reward-slot {
+    max-width: 480px;
+    margin: 32px auto 0;
+    padding: 24px;
+    text-align: center;
+    border: 1px dashed rgba(251,233,207,0.45);
+    border-radius: 2px;
+  }
+  .reward-placeholder {
+    margin: 0;
+    font-size: 15px;
+    opacity: 0.75;
+  }
