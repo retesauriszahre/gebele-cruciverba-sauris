@@ -88,17 +88,6 @@ if (clearBtn) {
   });
 }
 
-// DEBUG: pulsante temporaneo di autocompletamento — rimuovere prima della pubblicazione definitiva
-const debugFillBtn = document.getElementById('debug-fill-btn');
-if (debugFillBtn) {
-  debugFillBtn.addEventListener('click', () => {
-    document.querySelectorAll('.cell').forEach(cell => {
-      const input = cell.querySelector('input');
-      input.value = cell.dataset.letter.toUpperCase();
-    });
-    document.getElementById('check-btn').click();
-  });
-}
 
 // auto-advance focus in avanti, e Backspace/Canc che cancella e torna indietro casella per casella
 const inputs = Array.from(document.querySelectorAll('.cell input'));
