@@ -139,7 +139,10 @@ const winOk = document.getElementById('win-ok');
 const winEmpty = document.getElementById('win-empty');
 if (winOk && winEmpty) {
   const word = readHiddenWord();
-  if (word) {
+  // La parola salvata deve corrispondere a quella dell'edizione corrente:
+  // chi ha risolto una versione precedente non deve vedere la parola vecchia.
+  const expected = rowsMeta.map(([w, start, hl]) => w[hl]).join('');
+  if (word && word === expected) {
     document.getElementById('win-word').textContent = word;
     winOk.hidden = false;
     winEmpty.hidden = true;
