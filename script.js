@@ -32,9 +32,9 @@ function normalize(s) {
   return (s || "").toUpperCase().trim();
 }
 
-function hideRewardCta() {
-  const cta = document.getElementById('reward-cta');
-  if (cta) cta.hidden = true;
+function clearReveal() {
+  const reveal = document.getElementById('reveal');
+  if (reveal) reveal.classList.remove('show');
 }
 
 const checkBtn = document.getElementById('check-btn');
@@ -60,23 +60,20 @@ if (checkBtn) {
     if (!allFilled) {
       feedback.textContent = 'Mancano ancora alcune caselle.';
       feedback.className = 'bad';
-      document.getElementById('reveal').classList.remove('show');
-      hideRewardCta();
+      clearReveal();
     } else if (allCorrect) {
-      feedback.textContent = 'Tutte le risposte sono corrette.';
-      feedback.className = 'ok';
+      // Tutto corretto: si salva la parola e si va dritti alla ricompensa,
+      // senza passaggio intermedio.
       let hidden = '';
       rowsMeta.forEach(([word, start, hl]) => { hidden += word[hl]; });
-      document.getElementById('reveal-word').textContent = hidden;
-      document.getElementById('reveal').classList.add('show');
       saveHiddenWord(hidden);
-      const cta = document.getElementById('reward-cta');
-      if (cta) cta.hidden = false;
+      feedback.textContent = 'Tutte le risposte sono corrette.';
+      feedback.className = 'ok';
+      window.location.href = 'vinto.html';
     } else {
       feedback.textContent = 'Qualche lettera non è corretta: riprova.';
       feedback.className = 'bad';
-      document.getElementById('reveal').classList.remove('show');
-      hideRewardCta();
+      clearReveal();
     }
   });
 }
@@ -87,8 +84,7 @@ if (clearBtn) {
     document.querySelectorAll('.cell input').forEach(i => i.value = '');
     document.querySelectorAll('.cell').forEach(c => c.classList.remove('correct','wrong'));
     document.getElementById('feedback').textContent = '';
-    document.getElementById('reveal').classList.remove('show');
-    hideRewardCta();
+    clearReveal();
   });
 }
 
