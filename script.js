@@ -24,9 +24,9 @@ function readHiddenWord() {
    PAGINA CRUCIVERBA
    ============================================================ */
 
-const gridData = [[null, null, null, null, null, "F", "A", "V", "A", null, null], ["F", "A", "G", "G", "I", "O", null, null, null, null, null], [null, null, null, null, "C", "R", "A", "U", "T", "I", null], [null, null, null, null, null, "C", "A", "N", "A", "P", "A"], [null, null, null, "A", "C", "H", "I", "L", "L", "E", "A"], [null, "M", "I", "L", "L", "E", "F", "I", "O", "R", "I"], [null, null, null, "O", "R", "T", "O", null, null, null, null], [null, null, null, null, null, "T", "I", "S", "A", "N", "A"], ["A", "F", "F", "I", "N", "A", "Z", "I", "O", "N", "E"]];
+const gridData = [[null, null, null, null, null, "F", "A", "V", "A", null, null], ["F", "A", "G", "G", "I", "O", null, null, null, null, null], [null, null, null, null, "C", "R", "A", "U", "T", "I", null], [null, null, null, null, null, "C", "A", "N", "A", "P", "A"], [null, null, null, "A", "C", "H", "I", "L", "L", "E", "A"], [null, "M", "I", "L", "L", "E", "F", "I", "O", "R", "I"], [null, null, null, "O", "R", "T", "O", null, null, null, null], [null, null, null, null, null, "T", "I", "S", "A", "N", "A"], ["A", "F", "F", "I", "N", "A", "T", "U", "R", "A", null]];
 const hlCol = 5;
-const rowsMeta = [["FAVA", 5, 0], ["FAGGIO", 0, 5], ["CRAUTI", 4, 1], ["CANAPA", 5, 0], ["ACHILLEA", 3, 2], ["MILLEFIORI", 1, 4], ["ORTO", 3, 2], ["TISANA", 5, 0], ["AFFINAZIONE", 0, 5]];
+const rowsMeta = [["FAVA", 5, 0], ["FAGGIO", 0, 5], ["CRAUTI", 4, 1], ["CANAPA", 5, 0], ["ACHILLEA", 3, 2], ["MILLEFIORI", 1, 4], ["ORTO", 3, 2], ["TISANA", 5, 0], ["AFFINATURA", 0, 5]];
 
 function normalize(s) {
   return (s || "").toUpperCase().trim();
