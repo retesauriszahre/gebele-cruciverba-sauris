@@ -9,37 +9,45 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-win">
 
-  <img class="decor top-right" src="img/dotted.jpg" alt="">
-  <img class="decor bottom-left" src="img/fork.jpg" alt="">
+  <img class="decor top-left" src="img/dotted-terracotta.png" alt="">
 
   <div class="wrap">
-    <header>
-      <img class="logo" src="img/logo.jpg" alt="Gebele.">
-    </header>
-    <p class="kicker">Sauris in Carnia</p>
+    <div class="brandbar">
+      <img class="brandmark" src="img/sauris-zahre.png" alt="Sauris - Zahre">
+    </div>
 
     <div id="win-ok" hidden>
-      <h1 class="title win-title">HAI VINTO!</h1>
-      <p class="intro">Hai svelato la parola nascosta</p>
+      <h1 class="title display-script">hai vinto!</h1>
+      <p class="win-kicker">COMPLIMENTI, HAI TROVATO LA PAROLA!</p>
       <p class="win-word" id="win-word"></p>
-      <p class="intro">Complimenti, la sfida &egrave; completa. Grazie per aver giocato con Gebele.</p>
 
-      <!-- Spazio riservato al codice sconto: da definire in una fase successiva del progetto. -->
-      <div class="reward-slot">
-        <p class="reward-placeholder">Qui comparir&agrave; la tua ricompensa.</p>
+      <p class="intro">Usala come codice sconto e ottieni il 30% di sconto
+        sull&rsquo;ingresso all&rsquo;evento GEBELE.</p>
+
+      <p class="intro">Gebele &egrave; la forchetta che a Sauris il 3 e 4 ottobre
+        non serve solo sapori, ma diventa un percorso per i sensi: due giorni in cui
+        gusto, tatto, olfatto e udito raccontano il territorio insieme a chi lo vive
+        ogni giorno &mdash; produttori, cuochi, professori.</p>
+
+      <p class="intro">Ora non ti resta che venire a Sauris e goderti GEBELE!</p>
+
+      <div class="cta">
+        <a class="btn primary pill" id="info-link" href="https://www.sauris.org/gebele/" target="_blank" rel="noopener">clicca qui per info e prenotazione</a>
       </div>
     </div>
 
     <div id="win-empty" hidden>
       <p class="intro">Non risulta ancora nessuna sfida completata su questo dispositivo.</p>
       <div class="cta">
-        <a class="btn primary" href="cruciverba.html">Vai al cruciverba</a>
+        <a class="btn primary pill" href="cruciverba.html">Vai al cruciverba</a>
       </div>
     </div>
-
-    <footer>Gebele. &mdash; Sapori che raccontano, arte che incanta</footer>
+    <footer class="page-footer">
+      <img class="footer-logo" src="img/logo.png" alt="Gebele. Sapori che raccontano, arte che incanta">
+      <p class="footer-event">SAURIS - ZAHRE<br>3 e 4 ottobre 2026</p>
+    </footer>
   </div>
 
 <script src="script.js"></script>
